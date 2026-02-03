@@ -1,193 +1,224 @@
+/* --- GLOBAL RESETS --- */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
+
 body {
-  margin: 0px;
-  padding: 20px;
-  background-color: rgb(240, 242, 245);
-  font-family: Arial, sans-serif;
-  color: rgb(51, 51, 51);
-  background-image: radial-gradient(rgb(203, 213, 224) 1.5px, transparent 1.5px);
-  background-size: 30px 30px;
+    margin: 0px;
+    padding: 20px;
+    background-color: rgb(240, 242, 245);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: rgb(51, 51, 51);
+    background-image: radial-gradient(rgb(203, 213, 224) 1.5px, transparent 1.5px);
+    background-size: 30px 30px;
 }
+
+/* --- MAIN CONTAINER --- */
 .resume-container {
-  display: flex;
-  max-width: 1000px;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  min-height: 850px;
-  border-radius: 15px;
-  overflow: hidden;
+    /* DESKTOP LAYOUT: CSS GRID */
+    display: grid;
+    /* Two Columns: 30% Left, 70% Right */
+    grid-template-columns: 30% 70%;
+    /* Two Rows: Top row for Photo, Bottom row for rest of Sidebar */
+    grid-template-rows: auto 1fr;
+    
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    min-height: 850px;
+    border-radius: 15px;
+    overflow: hidden;
 }
-.sidebar {
-  width: 30%;
-  background-color: rgb(226, 232, 240);
-  color: rgb(45, 55, 72);
-  padding: 30px 20px;
-  text-align: center;
+
+/* --- BLOCK 1: PROFILE PHOTO --- */
+.profile-block {
+    grid-column: 1; /* Left Column */
+    grid-row: 1;    /* Top Row */
+    
+    background-color: rgb(226, 232, 240); /* Gray sidebar color */
+    padding: 40px 20px 10px 20px;
+    text-align: center;
 }
+
+/* --- BLOCK 3: SIDEBAR DETAILS (Contact, Skills, etc) --- */
+.sidebar-details-block {
+    grid-column: 1; /* Left Column */
+    grid-row: 2;    /* Bottom Row */
+    
+    background-color: rgb(226, 232, 240); /* Match profile color */
+    padding: 10px 20px 40px 20px;
+    text-align: center; /* Center align items in sidebar */
+}
+
+/* --- BLOCK 2: MAIN CONTENT (Name, About, Exp) --- */
+.main-block {
+    grid-column: 2;     /* Right Column */
+    grid-row: 1 / span 2; /* Span entire height */
+    
+    background-color: white;
+    padding: 40px;
+}
+
+/* --- COMPONENT STYLES --- */
 .profile-pic {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-  border: 4px solid rgb(255, 255, 255);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 4px solid rgb(255, 255, 255);
+    transition: transform 0.3s ease;
 }
+
 .profile-pic:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
 }
+
+.name {
+    font-size: 36px;
+    font-weight: bold;
+    color: rgb(26, 32, 44);
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+}
+
+.designation {
+    font-size: 16px;
+    font-weight: normal;
+    color: rgb(113, 128, 150);
+    margin: 0 0 30px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 .section-title {
-  font-size: 24px;
-  color: rgb(26, 32, 44);
-  margin-bottom: 15px;
-  border-bottom: 2px solid rgb(203, 213, 224);
-  display: block;
-  text-align: left;
-  width: 100%;
+    font-size: 20px;
+    color: rgb(26, 32, 44);
+    margin-bottom: 12px;
+    border-bottom: 2px solid rgb(203, 213, 224);
+    display: block;
+    text-align: left; /* Sidebar titles left aligned */
+    width: 100%;
+    padding-bottom: 5px;
+    font-weight: bold;
 }
-.contact-info,
-.sidebar-group {
-  margin-bottom: 30px;
-  text-align: left;
+
+/* Center contact info specifically */
+.contact-info, .sidebar-group {
+    margin-bottom: 30px;
+    text-align: left;
 }
-.text-left p,
-.list-style li {
-  font-size: 14px;
-  color: rgb(74, 85, 104);
-  line-height: 1.6;
-  margin: 5px 0px 5px 0px;
+
+.text-left p, .list-style li {
+    font-size: 14px;
+    color: rgb(74, 85, 104);
+    line-height: 1.6;
+    margin: 6px 0;
 }
-.contact-details p {
-  word-wrap: break-word;
+
+/* Main Content Headers */
+.main-block h2 {
+    color: rgb(8, 87, 81);
+    border-bottom: 2px solid rgb(226, 232, 240);
+    padding-bottom: 10px;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
 }
-.list-style {
-  padding-left: 20px;
-  margin: 0px;
+
+.about-text {
+    font-size: 16px;
+    color: rgb(74, 85, 104);
+    line-height: 1.8;
+    text-align: left;
 }
+
+.content-item {
+    margin-bottom: 30px;
+}
+
+.content-item h3 {
+    margin: 0 0 5px 0;
+    color: rgb(26, 32, 44);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.sub-text { font-size: 14px; color: rgb(113, 128, 150); font-weight: normal; }
+.institution { margin: 2px 0 10px 0; font-size: 13px; color: rgb(9, 98, 91); font-weight: 500; }
+.description { margin: 0; font-size: 15px; color: rgb(74, 85, 104); line-height: 1.6; }
+
+/* Socials */
 .social-links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
 }
 .social-links a {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  text-decoration: none;
-  color: rgb(9, 104, 96);
-  font-size: 14px;
-  transition: transform 0.2s ease, color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: rgb(9, 104, 96);
+    font-size: 15px;
 }
-.social-icon,
-.social-icon-2 {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-.social-icon-2 {
-  object-fit: cover;
-  border-radius: 5px;
-}
-.social-links a:hover {
-  transform: translateX(5px);
-  color: rgb(26, 32, 44);
-}
-.main-content {
-  width: 70%;
-  padding: 30px;
-  background-color: rgb(255, 255, 255);
-}
-.name {
-  font-size: 36px;
-  font-weight: bold;
-  color: rgb(26, 32, 44);
-  margin: 0px 0px 5px 0px;
-  letter-spacing: 1px;
-}
-.designation {
-  font-size: 18px;
-  font-weight: normal;
-  color: rgb(113, 128, 150);
-  margin: 0px 0px 30px 0px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-h2 {
-  color: rgb(8, 87, 81);
-  border-bottom: 2px solid rgb(226, 232, 240);
-  padding-bottom: 10px;
-  margin-top: 30px;
-  text-transform: uppercase;
-  text-align: left;
-  font-size: 20px;
-}
-.about-text {
-  font-size: 16px;
-  color: rgb(74, 85, 104);
-  line-height: 1.6;
-  text-align: justify;
-}
-.content-item {
-  margin-bottom: 25px;
-}
-.content-item h3 {
-  margin: 0px;
-  color: rgb(26, 32, 44);
-  font-size: 18px;
-  font-weight: bold;
-}
-.sub-text {
-  font-size: 14px;
-  color: rgb(113, 128, 150);
-  font-weight: normal;
-}
-.institution {
-  margin: 2px 0px 8px 0px;
-  font-size: 12px;
-  color: rgb(9, 98, 91);
-  font-style: normal;
-  font-weight: 300;
-}
-.description {
-  margin: 0;
-  font-size: 15px;
-  color: rgb(74, 85, 104);
-  line-height: 1.5;
-}
-.education-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  font-size: 15px;
-}
-.education-table th,
-.education-table td {
-  padding: 10px;
-  border-bottom: 1px solid rgb(224, 224, 224);
-  text-align: left;
-  vertical-align: top;
-}
-.education-table th {
-  background-color: rgb(245, 245, 245);
-  color: rgb(51, 51, 51);
-  font-weight: 600;
-}
-.education-table td:nth-child(3) {
-  white-space: nowrap;
-  font-size: 14px;
-  color: rgb(102, 102, 102);
-}
-.education-table td:nth-child(4) {
-  font-size: 14px;
-  line-height: 1.4;
+.social-icon, .social-icon-2 { width: 24px; height: 24px; object-fit: contain; }
+.social-icon-2 { object-fit: cover; border-radius: 5px; }
+.list-style { padding-left: 18px; margin: 0; }
+
+/* Table */
+.table-responsive { width: 100%; overflow-x: auto; margin-top: 15px; }
+.education-table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 500px; }
+.education-table th, .education-table td { padding: 12px; border-bottom: 1px solid rgb(224, 224, 224); text-align: left; vertical-align: top; }
+.education-table th { background-color: rgb(245, 245, 245); font-weight: 600; }
+
+/* --- MOBILE OPTIMIZATION --- */
+@media screen and (max-width: 768px) {
+    body { padding: 0px; background-color: white; }
+
+    /* SWITCH TO FLEXBOX FOR MOBILE ORDERING */
+    .resume-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    /* 1. PHOTO (Top) */
+    .profile-block {
+        order: 1;
+        width: 100%;
+        padding: 40px 20px 10px 20px;
+        background-color: white; /* Clean look on mobile */
+    }
+    
+    .profile-pic { margin: 0 auto; display: block; }
+
+    /* 2. MAIN CONTENT (Name -> About -> Workshops -> Exp -> Edu) */
+    .main-block {
+        order: 2;
+        width: 100%;
+        padding: 10px 25px 20px 25px;
+    }
+
+    /* Center Name & Desig on Mobile */
+    .name { font-size: 28px; text-align: center; }
+    .designation { text-align: center; margin-bottom: 25px; font-size: 14px; }
+    
+    /* 3. SIDEBAR DETAILS (Contact -> Skills -> Etc) */
+    .sidebar-details-block {
+        order: 3;
+        width: 100%;
+        padding: 20px 25px 50px 25px;
+        background-color: rgb(248, 250, 252); /* Light gray background to separate from main */
+    }
+
+    .section-title { margin-top: 10px; }
 }
